@@ -5,6 +5,7 @@
               cppLanguageStandard="20" bundleIdentifier="com.JZ.beat_instructor">
   <MAINGROUP id="NRRUxW" name="Beat_Instructor">
     <GROUP id="{9F0AAAA0-24EF-1B09-A2C7-F1687FF2C983}" name="Source">
+      <FILE id="OaQaME" name="utils.h" compile="0" resource="0" file="Source/utils.h"/>
       <FILE id="pw8b4B" name="Onset_Detector.h" compile="0" resource="0"
             file="Source/Onset_Detector.h"/>
       <GROUP id="{386DB169-6BB7-A37B-0DE4-22CF4BCF2C08}" name="Gamma">
