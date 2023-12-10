@@ -49,5 +49,8 @@ void Beat_InstructorAudioProcessorEditor::timerCallback() {
     auto position = audioProcessor.retrievePositionInfo();
     positionText = juce::String(get<0>(position));
     positionTextTwo = juce::String(get<1>(position));
+    //if (audioProcessor.isSpectrumAvailable()) {
+        //positionTextTwo = juce::String(audioProcessor.getOnsetSum());
+    //}
     repaint();
 }

@@ -18,12 +18,14 @@ class Onset_Detector {
 public:
     Onset_Detector(double sample_rate, int size) {
         OD_sampleRate = sample_rate;
-        OD_size = size;
-        binsMagsNew = (float*)malloc((size_t)size);
-        binsMagsOld = (float*)malloc((size_t)size);
         stft = gam::STFT(size, size/4, 0, 
                 gam::WindowType::HAMMING, 
                 gam::SpectralType::COMPLEX);
+        
+        OD_isSpectrumAvailable = false;
+        binsMagsNew = (float*)malloc(sizeof(stft.numBins()));
+        binsMagsOld = (float*)malloc(sizeof(stft.numBins()));
+        OD_size = stft.numBins();
     }
 
     ~Onset_Detector() {
@@ -34,17 +36,18 @@ public:
     /* to use this class: process every sample */
     /* if return true when processing sample, then grab the latest avail sum */
 
-    bool process(double input) {
-        isSpectrumReady = stft((float)input);
+    bool process(float input) {
+        OD_isSpectrumReady = stft(input);
 
-        if (isSpectrumReady) {
+        if (OD_isSpectrumReady) {
+            OD_isSpectrumAvailable = true;
             for (int i = 0; i < stft.numBins(); ++i) {
                 // store each bin as the L1 norm of the complex FFT
                 binsMagsOld[i] = binsMagsNew[i];
                 binsMagsNew[i] = abs(stft.bin(i).real()) + abs(stft.bin(i).imag());
             }
         }
-        return isSpectrumReady;
+        return OD_isSpectrumReady;
     }
 
     float* getLatestSpectrum() {
@@ -58,12 +61,18 @@ public:
         }
         return total;
     }
+    
+    bool isSpectrumAvailable() {
+        return OD_isSpectrumAvailable;
+    }
 
 private:
-    bool isSpectrumReady;
+    gam::STFT stft;
+    
+    bool OD_isSpectrumReady;
+    bool OD_isSpectrumAvailable;
     int OD_size;
     double OD_sampleRate;
-    gam::STFT stft;
     float* binsMagsNew;
     float* binsMagsOld;
 };

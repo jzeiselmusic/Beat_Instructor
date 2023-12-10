@@ -2,7 +2,8 @@
 
 <JUCERPROJECT id="dlcNCr" name="Beat_Instructor" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="JZ"
-              cppLanguageStandard="20" bundleIdentifier="com.JZ.beat_instructor">
+              cppLanguageStandard="20" bundleIdentifier="com.JZ.beatinstructor"
+              pluginFormats="buildAU,buildStandalone,buildVST,buildVST3">
   <MAINGROUP id="NRRUxW" name="Beat_Instructor">
     <GROUP id="{9F0AAAA0-24EF-1B09-A2C7-F1687FF2C983}" name="Source">
       <FILE id="OaQaME" name="utils.h" compile="0" resource="0" file="Source/utils.h"/>
@@ -109,7 +110,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" microphonePermissionNeeded="1">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="Beat_Instructor"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="Beat_Instructor"/>

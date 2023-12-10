@@ -10,7 +10,7 @@
 
 #include <JuceHeader.h>
 #include "Metronome_Audio.h"
-#include "Gamma/Gamma/DFT.h"
+#include "Onset_Detector.h"
 
 using namespace std;
 
@@ -60,10 +60,14 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     void getCurrentPosition();
+    bool isSpectrumAvailable();
+    float getOnsetSum();
     tuple<double, double> retrievePositionInfo();
 
 private:
     Metronome_Audio metronomeAudio = Metronome_Audio(this, getSampleRate());
+    
+    Onset_Detector onsetDetector = Onset_Detector(getSampleRate(), 2048);
     
     double ppqPosition = 0.0;
     double ppqPositionOfLastBarStart = 0.0;
