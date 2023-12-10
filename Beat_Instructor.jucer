@@ -5,6 +5,73 @@
               cppLanguageStandard="20" bundleIdentifier="com.JZ.beat_instructor">
   <MAINGROUP id="NRRUxW" name="Beat_Instructor">
     <GROUP id="{9F0AAAA0-24EF-1B09-A2C7-F1687FF2C983}" name="Source">
+      <FILE id="pw8b4B" name="Onset_Detector.h" compile="0" resource="0"
+            file="Source/Onset_Detector.h"/>
+      <GROUP id="{386DB169-6BB7-A37B-0DE4-22CF4BCF2C08}" name="Gamma">
+        <GROUP id="{54E41832-3C52-48F0-D02C-E02AA7494E29}" name="Gamma">
+          <FILE id="m6hS9M" name="Access.h" compile="0" resource="0" file="Source/Gamma/Gamma/Access.h"/>
+          <FILE id="eSSlep" name="Allocator.h" compile="0" resource="0" file="Source/Gamma/Gamma/Allocator.h"/>
+          <FILE id="ooaFD7" name="Analysis.h" compile="0" resource="0" file="Source/Gamma/Gamma/Analysis.h"/>
+          <FILE id="fgZC8b" name="arr.h" compile="0" resource="0" file="Source/Gamma/Gamma/arr.h"/>
+          <FILE id="YTF2jO" name="AudioIO.h" compile="0" resource="0" file="Source/Gamma/Gamma/AudioIO.h"/>
+          <FILE id="gTYZhW" name="Config.h" compile="0" resource="0" file="Source/Gamma/Gamma/Config.h"/>
+          <FILE id="L0zojR" name="Constants.h" compile="0" resource="0" file="Source/Gamma/Gamma/Constants.h"/>
+          <FILE id="aZAX3r" name="Containers.h" compile="0" resource="0" file="Source/Gamma/Gamma/Containers.h"/>
+          <FILE id="sKX791" name="Conversion.h" compile="0" resource="0" file="Source/Gamma/Gamma/Conversion.h"/>
+          <FILE id="J1dlio" name="Delay.h" compile="0" resource="0" file="Source/Gamma/Gamma/Delay.h"/>
+          <FILE id="BmKngQ" name="DFT.h" compile="0" resource="0" file="Source/Gamma/Gamma/DFT.h"/>
+          <FILE id="Pzesci" name="Domain.h" compile="0" resource="0" file="Source/Gamma/Gamma/Domain.h"/>
+          <FILE id="qFofMR" name="Effects.h" compile="0" resource="0" file="Source/Gamma/Gamma/Effects.h"/>
+          <FILE id="vriV53" name="Envelope.h" compile="0" resource="0" file="Source/Gamma/Gamma/Envelope.h"/>
+          <FILE id="Ty43Fd" name="FFT.h" compile="0" resource="0" file="Source/Gamma/Gamma/FFT.h"/>
+          <FILE id="cIbwhZ" name="Filter.h" compile="0" resource="0" file="Source/Gamma/Gamma/Filter.h"/>
+          <FILE id="yT4YTz" name="FormantData.h" compile="0" resource="0" file="Source/Gamma/Gamma/FormantData.h"/>
+          <FILE id="gM0bzd" name="Gamma.h" compile="0" resource="0" file="Source/Gamma/Gamma/Gamma.h"/>
+          <FILE id="c61S21" name="gen.h" compile="0" resource="0" file="Source/Gamma/Gamma/gen.h"/>
+          <FILE id="npP28l" name="HRFilter.h" compile="0" resource="0" file="Source/Gamma/Gamma/HRFilter.h"/>
+          <FILE id="rgazGc" name="ipl.h" compile="0" resource="0" file="Source/Gamma/Gamma/ipl.h"/>
+          <FILE id="nvKUzK" name="mem.h" compile="0" resource="0" file="Source/Gamma/Gamma/mem.h"/>
+          <FILE id="nRMXz3" name="Node.h" compile="0" resource="0" file="Source/Gamma/Gamma/Node.h"/>
+          <FILE id="KKPC99" name="Noise.h" compile="0" resource="0" file="Source/Gamma/Gamma/Noise.h"/>
+          <FILE id="qAetPa" name="Oscillator.h" compile="0" resource="0" file="Source/Gamma/Gamma/Oscillator.h"/>
+          <FILE id="ovLMHo" name="Print.h" compile="0" resource="0" file="Source/Gamma/Gamma/Print.h"/>
+          <FILE id="RrnSUl" name="pstdint.h" compile="0" resource="0" file="Source/Gamma/Gamma/pstdint.h"/>
+          <FILE id="zNWZ0z" name="Ramped.h" compile="0" resource="0" file="Source/Gamma/Gamma/Ramped.h"/>
+          <FILE id="MZAqTJ" name="Recorder.h" compile="0" resource="0" file="Source/Gamma/Gamma/Recorder.h"/>
+          <FILE id="TPieNj" name="rnd.h" compile="0" resource="0" file="Source/Gamma/Gamma/rnd.h"/>
+          <FILE id="i5dSLQ" name="Sample.h" compile="0" resource="0" file="Source/Gamma/Gamma/Sample.h"/>
+          <FILE id="C6r7HL" name="SamplePlayer.h" compile="0" resource="0" file="Source/Gamma/Gamma/SamplePlayer.h"/>
+          <FILE id="SsjPKy" name="Scheduler.h" compile="0" resource="0" file="Source/Gamma/Gamma/Scheduler.h"/>
+          <FILE id="VxNfYa" name="scl.h" compile="0" resource="0" file="Source/Gamma/Gamma/scl.h"/>
+          <FILE id="XnF4Rn" name="SoundFile.h" compile="0" resource="0" file="Source/Gamma/Gamma/SoundFile.h"/>
+          <FILE id="A6H0om" name="Spatial.h" compile="0" resource="0" file="Source/Gamma/Gamma/Spatial.h"/>
+          <FILE id="zdmaM7" name="std_swap.h" compile="0" resource="0" file="Source/Gamma/Gamma/std_swap.h"/>
+          <FILE id="tTszWK" name="Strategy.h" compile="0" resource="0" file="Source/Gamma/Gamma/Strategy.h"/>
+          <FILE id="KTo9Hu" name="tbl.h" compile="0" resource="0" file="Source/Gamma/Gamma/tbl.h"/>
+          <FILE id="LAlltc" name="Thread.h" compile="0" resource="0" file="Source/Gamma/Gamma/Thread.h"/>
+          <FILE id="JbBFgD" name="Timer.h" compile="0" resource="0" file="Source/Gamma/Gamma/Timer.h"/>
+          <FILE id="Nhlgho" name="TransferFunc.h" compile="0" resource="0" file="Source/Gamma/Gamma/TransferFunc.h"/>
+          <FILE id="bYSWp5" name="Types.h" compile="0" resource="0" file="Source/Gamma/Gamma/Types.h"/>
+          <FILE id="rfiozZ" name="UnitMaps.h" compile="0" resource="0" file="Source/Gamma/Gamma/UnitMaps.h"/>
+          <FILE id="bMOVaS" name="Voices.h" compile="0" resource="0" file="Source/Gamma/Gamma/Voices.h"/>
+        </GROUP>
+        <FILE id="Dcxe48" name="arr.cpp" compile="1" resource="0" file="Source/Gamma/arr.cpp"/>
+        <FILE id="n3NolQ" name="Conversion.cpp" compile="1" resource="0" file="Source/Gamma/Conversion.cpp"/>
+        <FILE id="o2QIub" name="DFT.cpp" compile="1" resource="0" file="Source/Gamma/DFT.cpp"/>
+        <FILE id="oEpSxp" name="Domain.cpp" compile="1" resource="0" file="Source/Gamma/Domain.cpp"/>
+        <FILE id="zDQcxQ" name="FFT_fftpack.cpp" compile="1" resource="0" file="Source/Gamma/FFT_fftpack.cpp"/>
+        <FILE id="GG90Ir" name="fftpack++.h" compile="0" resource="0" file="Source/Gamma/fftpack++.h"/>
+        <FILE id="mHyGD7" name="fftpack++.inc" compile="0" resource="1" file="Source/Gamma/fftpack++.inc"/>
+        <FILE id="VZeAKi" name="fftpack++1.cpp" compile="1" resource="0" file="Source/Gamma/fftpack++1.cpp"/>
+        <FILE id="MTo80d" name="fftpack++2.cpp" compile="1" resource="0" file="Source/Gamma/fftpack++2.cpp"/>
+        <FILE id="Cbbl6t" name="Print.cpp" compile="1" resource="0" file="Source/Gamma/Print.cpp"/>
+        <FILE id="qHRaTd" name="Recorder.cpp" compile="1" resource="0" file="Source/Gamma/Recorder.cpp"/>
+        <FILE id="pNUsbo" name="Scheduler.cpp" compile="1" resource="0" file="Source/Gamma/Scheduler.cpp"/>
+        <FILE id="QU2hqP" name="scl.cpp" compile="1" resource="0" file="Source/Gamma/scl.cpp"/>
+        <FILE id="clMnHX" name="SoundFile.cpp" compile="1" resource="0" file="Source/Gamma/SoundFile.cpp"/>
+        <FILE id="AM3lQa" name="SoundFileIO.h" compile="0" resource="0" file="Source/Gamma/SoundFileIO.h"/>
+        <FILE id="D769SO" name="Timer.cpp" compile="1" resource="0" file="Source/Gamma/Timer.cpp"/>
+      </GROUP>
       <FILE id="SLAXqm" name="Tempo_Estimator.cpp" compile="1" resource="0"
             file="Source/Tempo_Estimator.cpp"/>
       <FILE id="anQYdK" name="Tempo_Estimator.h" compile="0" resource="0"

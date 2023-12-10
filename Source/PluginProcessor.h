@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "Metronome_Audio.h"
+#include "Gamma/Gamma/DFT.h"
 
 using namespace std;
 
