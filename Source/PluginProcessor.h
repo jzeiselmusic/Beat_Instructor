@@ -67,7 +67,7 @@ public:
 private:
     Metronome_Audio metronomeAudio = Metronome_Audio(this, getSampleRate());
     
-    Onset_Detector onsetDetector = Onset_Detector(getSampleRate(), 2048);
+    Onset_Detector onsetDetector;
     
     double ppqPosition = 0.0;
     double ppqPositionOfLastBarStart = 0.0;

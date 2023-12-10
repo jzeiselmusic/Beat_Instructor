@@ -148,7 +148,7 @@ void Beat_InstructorAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
         auto* channelData = buffer.getReadPointer(channel);
         if (channel == 0) {
             for (int i = 0; i < buffer.getNumSamples(); ++i) {
-                // onsetDetector.process(channelData[i]);
+                
             }
         }
     }
@@ -157,11 +157,11 @@ void Beat_InstructorAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
 //==============================================================================
 
 bool Beat_InstructorAudioProcessor::isSpectrumAvailable() {
-    return onsetDetector.isSpectrumAvailable();
+
 }
 
 float Beat_InstructorAudioProcessor::getOnsetSum() {
-    return onsetDetector.onsetDectionSum();
+
 }
 
 void Beat_InstructorAudioProcessor::getCurrentPosition()

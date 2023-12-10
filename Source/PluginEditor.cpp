@@ -19,7 +19,7 @@ Beat_InstructorAudioProcessorEditor::Beat_InstructorAudioProcessorEditor (Beat_I
     // editor's size to whatever you need it to be.
     setSize (400, 300);
     
-    startTimerHz(10);
+    startTimerHz(5);
 }
 
 Beat_InstructorAudioProcessorEditor::~Beat_InstructorAudioProcessorEditor()
