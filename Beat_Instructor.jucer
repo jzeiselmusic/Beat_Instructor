@@ -5,6 +5,10 @@
               cppLanguageStandard="20" bundleIdentifier="com.JZ.beat_instructor">
   <MAINGROUP id="NRRUxW" name="Beat_Instructor">
     <GROUP id="{9F0AAAA0-24EF-1B09-A2C7-F1687FF2C983}" name="Source">
+      <FILE id="SLAXqm" name="Tempo_Estimator.cpp" compile="1" resource="0"
+            file="Source/Tempo_Estimator.cpp"/>
+      <FILE id="anQYdK" name="Tempo_Estimator.h" compile="0" resource="0"
+            file="Source/Tempo_Estimator.h"/>
       <FILE id="NvXHjH" name="Metronome_Audio.h" compile="0" resource="0"
             file="Source/Metronome_Audio.h"/>
       <GROUP id="{DAC6D6B9-B310-D30B-5315-AD2157D0B50C}" name="Components">
