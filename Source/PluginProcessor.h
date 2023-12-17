@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "Metronome_Audio.h"
 #include "Onset_Detector.h"
+#include "STFT.h"
 
 using namespace std;
 
@@ -68,6 +69,8 @@ private:
     Metronome_Audio metronomeAudio = Metronome_Audio(this, getSampleRate());
     
     Onset_Detector onsetDetector;
+    
+    STFT appSTFT = STFT(getSampleRate(), 16);
     
     double ppqPosition = 0.0;
     double ppqPositionOfLastBarStart = 0.0;

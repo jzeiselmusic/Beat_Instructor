@@ -146,9 +146,10 @@ void Beat_InstructorAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getReadPointer(channel);
-        if (channel == 0) {
-            for (int i = 0; i < buffer.getNumSamples(); ++i) {
-                
+        for (int i = 0; i < buffer.getNumSamples(); ++i) {
+            if (appSTFT.addInput(channelData[i])) {
+                /* fft is ready to read */
+                std::vector<float> fft = std::get<0>(appSTFT.processFFT());
             }
         }
     }
