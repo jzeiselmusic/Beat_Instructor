@@ -15,7 +15,7 @@
 
 class Onset_Detector {
 public:
-
+    
 private:
 
 };
