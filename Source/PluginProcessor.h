@@ -70,7 +70,7 @@ private:
     
     Onset_Detector onsetDetector;
     
-    STFT appSTFT = STFT(getSampleRate(), 16);
+    STFT appSTFT = STFT(getSampleRate(), 256);
     
     double ppqPosition = 0.0;
     double ppqPositionOfLastBarStart = 0.0;

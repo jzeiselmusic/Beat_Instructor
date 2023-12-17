@@ -8,6 +8,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -150,6 +151,9 @@ void Beat_InstructorAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
             if (appSTFT.addInput(channelData[i])) {
                 /* fft is ready to read */
                 std::vector<float> fft = std::get<0>(appSTFT.processFFT());
+                float onset = appSTFT.performOnsetFunction();
+                cout << "onset: " << std::fixed << std::setw(11)
+                    << std::setprecision(4) << onset << "\n";
             }
         }
     }

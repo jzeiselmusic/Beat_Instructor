@@ -11,7 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <iomanip>
+#include "utils.h"
 
 class STFT {
 public:
@@ -24,11 +24,13 @@ public:
         
         /* allocate space for input and fft */
         STFT_inputBuffer = new std::vector<float>(size, 0.0);
+        STFT_previousFFTBuffer = new std::vector<float>(size, 0.0);
         STFT_fftModule = new juce::dsp::FFT(log2((double)size));
     }
     
     ~STFT() {
         delete STFT_inputBuffer;
+        delete STFT_previousFFTBuffer;
         delete STFT_fftModule;
     }
     
@@ -60,16 +62,38 @@ public:
             /* calculates both positive and negative frequencies */
             /* usable values will be half of STFT_size */
             STFT_fftModule->performFrequencyOnlyForwardTransform
-            (&(STFT_inputBuffer->at(0)));
+            (&(STFT_inputBuffer->at(0)), false);
             
             STFT_isInputReadyToBeProcessed = false;
+            STFT_isFFTReady = true;
             
             return {*STFT_inputBuffer, true};
         }
     }
     
+    float performOnsetFunction() {
+        if (STFT_isFFTReady == false) throw std::runtime_error("FFT not ready");
+        
+        /* onset detection function takes the FFT spectrum
+           and returns a value for each window */
+        float sum = 0.0;
+        for (int j = 0; j < (STFT_size / 2); ++j) {
+            sum += halfWaveRect(STFT_inputBuffer->at(j)
+                        - STFT_previousFFTBuffer->at(j));
+        }
+        
+        updatePastFFT();
+        
+        return sum;
+    }
+    
+    void updatePastFFT() {
+        *STFT_previousFFTBuffer = *STFT_inputBuffer;
+    }
+    
     
 private:
+    bool STFT_isFFTReady = false;
     bool STFT_isInputReadyToBeProcessed = false;
     int STFT_size;
     double STFT_sampleRate;
@@ -77,5 +101,6 @@ private:
     int STFT_inputIndex = 0;
     
     std::vector<float>* STFT_inputBuffer;
+    std::vector<float>* STFT_previousFFTBuffer;
     juce::dsp::FFT* STFT_fftModule;
 };
