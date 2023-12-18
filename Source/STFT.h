@@ -10,17 +10,15 @@
 
 #pragma once
 
-#include <JuceHeader.h>
 #include "utils.h"
 
 class STFT {
 public:
-    STFT(double sample_rate, int size) {
+    STFT(int size) {
         
         if ((size & size-1) != 0) throw
             std::runtime_error("size of fft must be power of 2");
         STFT_size = size;
-        STFT_sampleRate = sample_rate;
         
         /* allocate space for input and fft */
         STFT_inputBuffer = new std::vector<float>(size, 0.0);
@@ -71,24 +69,16 @@ public:
         }
     }
     
-    float performOnsetFunction() {
-        if (STFT_isFFTReady == false) throw std::runtime_error("FFT not ready");
-        
-        /* onset detection function takes the FFT spectrum
-           and returns a value for each window */
-        float sum = 0.0;
-        for (int j = 0; j < (STFT_size / 2); ++j) {
-            sum += halfWaveRect(STFT_inputBuffer->at(j)
-                        - STFT_previousFFTBuffer->at(j));
-        }
-        
-        updatePastFFT();
-        
-        return sum;
-    }
-    
     void updatePastFFT() {
         *STFT_previousFFTBuffer = *STFT_inputBuffer;
+    }
+    
+    std::vector<float>* getInputBuffer() {
+        return STFT_inputBuffer;
+    }
+    
+    std::vector<float>* getPreviousBuffer() {
+        return STFT_previousFFTBuffer;
     }
     
     
@@ -96,7 +86,6 @@ private:
     bool STFT_isFFTReady = false;
     bool STFT_isInputReadyToBeProcessed = false;
     int STFT_size;
-    double STFT_sampleRate;
     
     int STFT_inputIndex = 0;
     

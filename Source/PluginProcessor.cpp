@@ -148,12 +148,8 @@ void Beat_InstructorAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
     {
         auto* channelData = buffer.getReadPointer(channel);
         for (int i = 0; i < buffer.getNumSamples(); ++i) {
-            if (appSTFT.addInput(channelData[i])) {
-                /* fft is ready to read */
-                std::vector<float> fft = std::get<0>(appSTFT.processFFT());
-                float onset = appSTFT.performOnsetFunction();
-                cout << "onset: " << std::fixed << std::setw(11)
-                    << std::setprecision(4) << onset << "\n";
+            if (onsetDetector.process(channelData[i])) {
+                bool onset = onsetDetector.detectPeakInOnsetBuffer();
             }
         }
     }
