@@ -150,20 +150,13 @@ void Beat_InstructorAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
         for (int i = 0; i < buffer.getNumSamples(); ++i) {
             if (onsetDetector.process(channelData[i])) {
                 bool onset = onsetDetector.detectPeakInOnsetBuffer();
+                cout << "onset: " << onset << "\n";
             }
         }
     }
 }
 
 //==============================================================================
-
-bool Beat_InstructorAudioProcessor::isSpectrumAvailable() {
-
-}
-
-float Beat_InstructorAudioProcessor::getOnsetSum() {
-
-}
 
 void Beat_InstructorAudioProcessor::getCurrentPosition()
 {

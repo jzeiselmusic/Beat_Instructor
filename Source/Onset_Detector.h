@@ -16,9 +16,10 @@
 
 class Onset_Detector {
 public:
-    Onset_Detector(int size) {
+    Onset_Detector(int size, int cooldown = 20) {
         STFT_size = size;
         onsetSTFT = new STFT(256);
+        COOLDOWN_AMOUNT = cooldown;
     }
     ~Onset_Detector() { delete onsetSTFT ;}
     
@@ -61,6 +62,13 @@ public:
             /* calculate average and std of first 90 values,
                then calculate how much current sample deviates
                from the average */
+            if (TRIGGERED) {
+                onsetCoolDown += 1;
+                if (onsetCoolDown == COOLDOWN_AMOUNT) {
+                    onsetCoolDown = 0;
+                    TRIGGERED = false;
+                }
+            }
             std::vector<double> firstNinety;
             std::copy(onsetBuffer.begin(), onsetBuffer.begin() + 90,
                       std::back_inserter(firstNinety));
@@ -78,7 +86,13 @@ public:
             onsetStdev = stdev;
             
             if (onsetBuffer.at(99) > (m + 4*stdev)) {
-                return true;
+                if (!TRIGGERED) {
+                    TRIGGERED = true;
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
             else {
                 return false;
@@ -100,4 +114,8 @@ private:
     STFT* onsetSTFT;
     float onsetMean = 0.0;
     float onsetStdev = 0.0;
+    
+    int COOLDOWN_AMOUNT;
+    int onsetCoolDown = 0;
+    bool TRIGGERED = false;
 };
