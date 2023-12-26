@@ -144,13 +144,14 @@ void Beat_InstructorAudioProcessor::processBlock (juce::AudioBuffer<float>& buff
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
+    int triggered = 0;
+    
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getReadPointer(channel);
         for (int i = 0; i < buffer.getNumSamples(); ++i) {
             if (onsetDetector.process(channelData[i])) {
                 bool onset = onsetDetector.detectPeakInOnsetBuffer();
-                cout << "onset: " << onset << "\n";
             }
         }
     }

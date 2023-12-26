@@ -16,10 +16,11 @@
 
 class Onset_Detector {
 public:
-    Onset_Detector(int size, int cooldown = 20) {
+    Onset_Detector(int size, int cooldown = 20, int threshold_length = 100) {
         STFT_size = size;
         onsetSTFT = new STFT(256);
         COOLDOWN_AMOUNT = cooldown;
+        THRESHOLD_LENGTH = threshold_length;
     }
     ~Onset_Detector() { delete onsetSTFT ;}
     
@@ -43,7 +44,7 @@ public:
         
         /* add onset to an onset list */
         onsetBuffer.push_back(sum);
-        if (onsetBuffer.size() > 100) {
+        if (onsetBuffer.size() > THRESHOLD_LENGTH) {
             /* keep list to maximum 100 */
             onsetBuffer.erase(onsetBuffer.begin());
         }
@@ -54,12 +55,12 @@ public:
     }
     
     bool detectPeakInOnsetBuffer() {
-        if (onsetBuffer.size() < 100) {
+        if (onsetBuffer.size() < THRESHOLD_LENGTH) {
             return false;
         }
         else
         {
-            /* calculate average and std of first 90 values,
+            /* calculate average and std of first N values,
                then calculate how much current sample deviates
                from the average */
             if (TRIGGERED) {
@@ -69,23 +70,24 @@ public:
                     TRIGGERED = false;
                 }
             }
-            std::vector<double> firstNinety;
-            std::copy(onsetBuffer.begin(), onsetBuffer.begin() + 90,
-                      std::back_inserter(firstNinety));
-            double sum = std::accumulate(std::begin(firstNinety), std::end(firstNinety), 0.0);
-            double m =  sum / firstNinety.size();
+            std::vector<double> firstN;
+            std::copy(onsetBuffer.begin(), onsetBuffer.begin() + THRESHOLD_LENGTH - 5,
+                      std::back_inserter(firstN));
+            double sum = std::accumulate(std::begin(firstN), std::end(firstN), 0.0);
+            double m =  sum / firstN.size();
 
             double accum = 0.0;
-            std::for_each (std::begin(firstNinety), std::end(firstNinety), [&](const double d) {
+            std::for_each (std::begin(firstN), std::end(firstN), [&](const double d) {
                 accum += (d - m) * (d - m);
             });
 
-            double stdev = sqrt(accum / (firstNinety.size()-1));
+            double stdev = sqrt(accum / (firstN.size()-1));
             
             onsetMean = m;
             onsetStdev = stdev;
+            latestOnset = onsetBuffer.at(THRESHOLD_LENGTH-1);
             
-            if (onsetBuffer.at(99) > (m + 4*stdev)) {
+            if (latestOnset > (m + 2*stdev) && latestOnset > 3.0) {
                 if (!TRIGGERED) {
                     TRIGGERED = true;
                     return true;
@@ -108,14 +110,20 @@ public:
         return onsetStdev;
     }
     
+    float getLatestOnset() {
+        return latestOnset;
+    }
+    
 private:
     int STFT_size;
     std::vector<float> onsetBuffer;
     STFT* onsetSTFT;
     float onsetMean = 0.0;
     float onsetStdev = 0.0;
+    float latestOnset = 0.0;
     
     int COOLDOWN_AMOUNT;
-    int onsetCoolDown = 0;
+    int THRESHOLD_LENGTH;
     bool TRIGGERED = false;
+    int onsetCoolDown = 0;
 };

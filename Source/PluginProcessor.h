@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "Metronome_Audio.h"
 #include "Onset_Detector.h"
+#include "Tempo_Estimator.h"
 
 using namespace std;
 
@@ -67,7 +68,9 @@ public:
 private:
     Metronome_Audio metronomeAudio = Metronome_Audio(this, getSampleRate());
     
-    Onset_Detector onsetDetector = Onset_Detector(256);
+    Onset_Detector onsetDetector = Onset_Detector(256, 20, 50);
+    
+    Tempo_Estimator tempoEstimator = Tempo_Estimator(int(getSampleRate() * 2));
     
     double ppqPosition = 0.0;
     double ppqPositionOfLastBarStart = 0.0;
